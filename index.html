@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,16 +12,24 @@
     <script defer src="script.js"></script>
 
 </head>
+
 <body>
     <div id="sidebar">
-        <div id="color-picker-div">
-            <input id="color-input" type="color" value="#000000">
+        <div id="color-picker-area">
+            <div id="color-picker-div">
+                <input id="color-input" type="color" value="#000000">
+            </div>
+            <label>Color</label>
         </div>
-        <label>Color</label>
+        <div id="cell-number-picker">
+            <input type="range" value="8" min="8" max="64" step="2" oninput="this.nextElementSibling.value = `${this.value} x ${this.value}`">
+            <output>8 x 8</output>
+        </div>
     </div>
     </div>
     <div id="sketch-area">
 
     </div>
 </body>
+
 </html>
