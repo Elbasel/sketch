@@ -51,12 +51,11 @@ body {
     /* Avoiding Double Borders */
     margin-top: -1px;
     margin-left: -1px;
+    -webkit-user-drag: none;
 }
 
 
-.cell:hover {
-    background-color: green;
-}
+
 /* ========== END Basic Layout ========== */
 
 
@@ -83,7 +82,7 @@ input[type="color"] {
 }
 
 #sidebar label {
-    font-size: 32px;
+    font-size: 24px;
 }
 
 #color-picker-area {
@@ -96,8 +95,16 @@ input[type="color"] {
 
 #cell-number-picker {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    gap: 32px;
+
+    align-items: center;
 }
+
+output {
+    font-size: 32px;
+}
+
 
 
 /* ========== START Slider Styles ========== */
@@ -124,6 +131,63 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-thumb:active {
     transform: scale(1.6);
 }
-/* ========== END Slide Styles ========== */
+/* ========== END Slider Styles ========== */
+
+
+p {
+    text-align: center;
+    font-size: 16px;
+    font-style: italic;
+}
+
+
+/* ========== START BUtton Styles ========== */
+
+
+#buttons {
+    display: flex;
+    gap: 16px;
+}
+
+button {
+    background-color: var(--seconday);
+    color: var(--basic);
+    border: 1px solid var(--basic);
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    height: 45px;
+    width: 130px;
+
+}
+
+
+.rainbow-button {
+
+    background: linear-gradient(105deg,
+    /* Base gradient stops */
+    #f6d365, #fda085, #f6d365, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3,
+    /* Repeat your base gradient stops */
+    #f6d365, #fda085, #f6d365, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3,
+    /* Repeat your first gradient stop */
+    #f6d365);
+
+    background-size: 200% 200%;
+    animation: rainbow 5s linear infinite;
+}
+
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* ========== END BUtton Styles ========== */
+
 
 /* ========== END Sidebar Elements ========== */
+
+
+@keyframes rainbow {
+    0% { background-position: 100% 100% }
+  100% { background-position: 0% 0% }
+}
