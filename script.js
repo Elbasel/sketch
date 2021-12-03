@@ -11,7 +11,7 @@ function fillSketchArea(gridWidth) {
 
     //making sure cells will be a perfect square
     gridWidth = gridWidth ** 2;
-    let flexBasis = (100 / Math.sqrt(gridWidth)) + "%";
+    let flexBasis = (100 / Math.sqrt(gridWidth)) + "%"; 
 
     for (let i = 0; i < gridWidth; i++) {
 
@@ -21,10 +21,10 @@ function fillSketchArea(gridWidth) {
         
         //prevent default drag behavior
         cell.addEventListener('mousedown', e =>  e.preventDefault())
-        //fillCell will either draw or erase bases on which mouse button is pressed
+        //fillCell will either draw or erase based on which mouse button is pressed
         cell.addEventListener('mouseover', e => fillCellOnMouseOver(e));
 
-        // left click, right click => draw, erase
+        // left click draws, right click erases
         cell.addEventListener('click', e => fillCellOnClick(e));
         cell.addEventListener('contextmenu', e => e.target.style.backgroundColor = '');
        
@@ -35,6 +35,7 @@ function fillSketchArea(gridWidth) {
 
 
 function getFillColor() {
+    //If the random button is enabled: return a random number, else: return the selected color
     return randomColorsButton.classList.contains('rainbow-button') ? '#' + Math.floor(Math.random()*16777215).toString(16) : colorInput.value;
 }
 
@@ -81,5 +82,4 @@ randomColorsButton.onclick = (e) => e.target.classList.toggle('rainbow-button');
 fillSketchArea(INITIIAL_WIDTH);
 document.querySelector('output').textContent = `${INITIIAL_WIDTH} × ${INITIIAL_WIDTH}`;
 document.querySelector('input[type="range"').setAttribute('value', INITIIAL_WIDTH);
-
 window.addEventListener('keypress', e => keyboardShortcut(e))
