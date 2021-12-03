@@ -55,6 +55,10 @@ function clearGrid() {
     gridCells.forEach(cell => cell.style.backgroundColor = '');
 }
 
+function keyboardShortcut(e) {
+    if (e.key === 'c') clearGrid();
+    if (e.key === 'm') randomColorsButton.classList.toggle('rainbow-button')
+}
 
 
 
@@ -77,3 +81,5 @@ randomColorsButton.onclick = (e) => e.target.classList.toggle('rainbow-button');
 fillSketchArea(INITIIAL_WIDTH);
 document.querySelector('output').textContent = `${INITIIAL_WIDTH} × ${INITIIAL_WIDTH}`;
 document.querySelector('input[type="range"').setAttribute('value', INITIIAL_WIDTH);
+
+window.addEventListener('keypress', e => keyboardShortcut(e))
