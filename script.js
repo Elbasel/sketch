@@ -11,22 +11,22 @@ function fillSketchArea(gridWidth) {
 
     //making sure cells will be a perfect square
     gridWidth = gridWidth ** 2;
+    let flexBasis = (100 / Math.sqrt(gridWidth)) + "%";
 
     for (let i = 0; i < gridWidth; i++) {
 
         let cell = document.createElement('div');
-        cell.style.flexBasis = (100 / Math.sqrt(gridWidth)).toFixed(2) + "%";
+        cell.style.flexBasis = flexBasis;
         cell.classList.add('cell');
         
         //prevent default drag behavior
-        cell.setAttribute('onmousedown', "event.preventDefault ? event.preventDefault() : event.returnValue = false");
-        
+        cell.addEventListener('mousedown', e =>  e.preventDefault())
         //fillCell will either draw or erase bases on which mouse button is pressed
-        cell.addEventListener('mouseover', (e) => fillCellOnMouseOver(e));
+        cell.addEventListener('mouseover', e => fillCellOnMouseOver(e));
 
         // left click, right click => draw, erase
-        cell.addEventListener('click', (e) => fillCellOnClick(e));
-        cell.addEventListener('contextmenu', (e) => e.target.style.backgroundColor = '');
+        cell.addEventListener('click', e => fillCellOnClick(e));
+        cell.addEventListener('contextmenu', e => e.target.style.backgroundColor = '');
        
         sketchArea.appendChild(cell);
     }
