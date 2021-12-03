@@ -26,7 +26,10 @@ function fillSketchArea(gridWidth) {
 
         // left click draws, right click erases
         cell.addEventListener('click', e => fillCellOnClick(e));
-        cell.addEventListener('contextmenu', e => e.target.style.backgroundColor = '');
+        cell.addEventListener('contextmenu', e => {
+            e.target.style.backgroundColor = '';
+            e.target.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+        });
        
         sketchArea.appendChild(cell);
     }
@@ -41,19 +44,29 @@ function getFillColor() {
 
 function fillCellOnMouseOver(e) {
     let fillColor = getFillColor();
-    if(e.buttons === 1) e.target.style.backgroundColor = fillColor;
-    if (e.buttons === 2) e.target.style.backgroundColor = '';
+    if(e.buttons === 1) {
+        e.target.style.backgroundColor = fillColor;
+        e.target.style.borderColor = fillColor;
+    }
+    if (e.buttons === 2) {
+        e.target.style.backgroundColor = '';
+        e.target.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+    }
 }
 
 function fillCellOnClick(e) {
     let fillColor = getFillColor();
     e.target.style.backgroundColor = fillColor;
+    e.target.style.borderColor = fillColor;
 }
 
 
 function clearGrid() {
     let gridCells = document.querySelectorAll('.cell');
-    gridCells.forEach(cell => cell.style.backgroundColor = '');
+    gridCells.forEach(cell => {
+        cell.style.backgroundColor = '';
+        cell.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+    });
 }
 
 function keyboardShortcut(e) {

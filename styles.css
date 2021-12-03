@@ -196,6 +196,12 @@ button:hover {
 /* ========== END Sidebar Elements ========== */
 
 
+footer {
+    font-size: 10px;
+    font-style: italic;
+}
+
+
 @keyframes rainbow {
     0% { background-position: 100% 100% }
   100% { background-position: 0% 0% }
